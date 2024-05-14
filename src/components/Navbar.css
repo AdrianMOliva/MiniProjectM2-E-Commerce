@@ -1,10 +1,24 @@
-.navbarMain {
+.navbar {
+  position: fixed;
   margin-top: 0;
   display: flex;
   flex-direction: row;
+  left: 200px;
+  background-color: rgb(11, 11, 123);
+  height: 90px;
+  padding: 10px 10px;
+  justify-content: center;
+
+  width: calc(100% - 200px);
+}
+
+.navbar > .navbarTitle {
+  font-size: 30px;
+  justify-self: center;
+  align-self: center;
 }
 
 img {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
 }

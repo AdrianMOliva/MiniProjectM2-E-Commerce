@@ -1,9 +1,10 @@
 import "./Footer.css";
-import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer>
-      <p>GitHub</p>
+      <a href="https://github.com/AdrianMOliva/MiniProjectM2-E-Commerce">
+        GitHub Repository
+      </a>
     </footer>
   );
 }
