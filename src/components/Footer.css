@@ -11,3 +11,8 @@ footer {
   align-items: center;
   font-size: 18px;
 }
+
+footer > a {
+  text-decoration: none;
+  color: whitesmoke;
+}

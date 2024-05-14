@@ -1,7 +1,8 @@
 import ListItem from "./ListItem";
+import "./List.css";
 function List({ data, onDelete }) {
   return (
-    <ul>
+    <ul className="itemList">
       {data.map((item) => (
         <ListItem key={item.id} item={item} onDelete={onDelete} />
       ))}

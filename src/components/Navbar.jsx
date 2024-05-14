@@ -7,7 +7,7 @@ function Navbar() {
         <img src={logo} alt="Website Logo" />
       </div>
       <div className="navbarTitle">
-        <h1>E-Commerce</h1>
+        <h1>E-Commerce Admin</h1>
       </div>
     </nav>
   );
