@@ -6,25 +6,20 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import List from "./components/List";
-//import HomePage from "./pages/HomePage";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
 function App() {
-  const [data, setData] = useState(jsonData);
-
-  const handleDelete = (id) => {
-    const updatedData = data.filter((item) => item.id !== id);
-
-    setData(updatedData);
-  };
   return (
     <div>
-      <Navbar />
-      <Sidebar />
-      {/*<div className="pages">
-        <HomePage />
-      </div>*/}
-      <List data={data} onDelete={handleDelete} />
-      <Footer />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/product/details/:productId"
+          element={<ProductDetailsPage />}
+        />
+      </Routes>
     </div>
   );
 }

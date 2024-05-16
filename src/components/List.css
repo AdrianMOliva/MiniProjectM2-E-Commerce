@@ -1,40 +1,42 @@
 .itemList {
   position: fixed;
-  top: 120px; /* Adjust top position to accommodate navbar */
-  bottom: 90px; /* Adjust bottom position to accommodate footer */
-  left: 200px; /* Adjust left position to accommodate sidebar */
+  top: 120px;
+  bottom: 90px;
+  left: 200px;
   right: 0;
-  overflow-y: auto; /* Add scrollbar if content exceeds height */
+  overflow-y: auto;
   margin: 0;
   padding: 0;
   list-style: none;
-  border-left: 1px solid #ccc; /* Add border to the left */
-  border-right: 1px solid #ccc; /* Add border to the right */
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
 }
 
-.itemList li {
+.productLook {
   padding: 10px;
   border-bottom: 1px solid #ccc;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  text-decoration: none;
 }
 
-.itemList li > span {
+.productLook > span {
   font-size: 20px;
+  text-decoration: none;
 }
 
-.itemList li > img {
+.productLook > img {
   width: 300px;
   height: 200px;
 }
 
-.itemList li > button {
+.productLook > button {
   margin-right: 30px;
   width: 60px;
   height: 30px;
 }
 
-.itemList li:last-child {
+.productLook:last-child {
   border-bottom: none;
 }
