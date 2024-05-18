@@ -1,14 +1,10 @@
 import "./App.css";
-import { useState } from "react";
-import jsonData from "./assets/products.json";
-import { Link } from "react-router-dom";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
-import List from "./components/List";
+
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
+import NotFound from "./pages/NotFound";
+import AboutPage from "./pages/AboutPage";
 
 function App() {
   return (
@@ -19,6 +15,8 @@ function App() {
           path="/product/details/:productId"
           element={<ProductDetailsPage />}
         />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

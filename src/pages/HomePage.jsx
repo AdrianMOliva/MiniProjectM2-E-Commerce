@@ -5,7 +5,6 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import List from "../components/List";
-import { Routes, Route } from "react-router-dom";
 
 function HomePage() {
   const [data, setData] = useState(jsonData);
