@@ -11,6 +11,8 @@ function UpdateProductForm () {
   const [rating, setRating] = useState("");
   const [brand, setBrand] = useState("");
 
+  const nav = useNavigate();
+
   const { productId } = useParams();
 
   useEffect(() => {
@@ -27,6 +29,7 @@ function UpdateProductForm () {
         setDiscount(response.discount);
         setRating(response.rating);
         setBrand(response.brand);
+        nav("/");
       } catch (err) {
         console.log(err);
       }
@@ -35,13 +38,12 @@ function UpdateProductForm () {
   }, [productId]);
 
   const handleUpdateProduct = async (event) => {
-    //stop the form from refreshing
     event.preventDefault();
-    const newProduct = { title, description, thumbnail, price, discount, rating, brand };
+    const updatedProduct = { title, description, thumbnail, price, discount, rating, brand };
     try {
       const response = await axios.put(
         `https://dummyjson.com/products/${productId}`,
-        newProduct
+        updatedProduct
       );
       console.log("this is the update", response);
     } catch (error) {
@@ -84,7 +86,7 @@ function UpdateProductForm () {
           />
         </label>
         <label>
-          Description:
+          Price:
           <input
             type="text"
             value={price}
@@ -94,32 +96,32 @@ function UpdateProductForm () {
           />
         </label>
         <label>
-          Description:
+          Discount(%):
           <input
             type="text"
-            value={description}
+            value={discount}
             onChange={(e) => {
-              setDescription(e.target.value);
+              setDiscount(e.target.value);
             }}
           />
         </label>
         <label>
-          Description:
+          Rating:
           <input
             type="text"
-            value={description}
+            value={rating}
             onChange={(e) => {
-              setDescription(e.target.value);
+              setRating(e.target.value);
             }}
           />
         </label>
         <label>
-          Description:
+          Brand:
           <input
             type="text"
-            value={description}
+            value={brand}
             onChange={(e) => {
-              setDescription(e.target.value);
+              setBrand(e.target.value);
             }}
           />
         </label>
@@ -128,3 +130,5 @@ function UpdateProductForm () {
     </div>
   );
 };
+
+export default UpdateProductForm;

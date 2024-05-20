@@ -14,6 +14,9 @@ function ListItem({ item, onDelete }) {
         <span>{item.price}$</span>
       </Link>
       <button onClick={() => onDelete(item.id)}>Delete</button>
+      <Link to={`/updateProduct/${item.id}`}>
+        <button>Update Product</button>
+      </Link>
     </li>
   );
 }

@@ -5,6 +5,8 @@ import HomePage from "./pages/HomePage";
 import ProductDetailsPage from "./pages/ProductDetailsPage";
 import NotFound from "./pages/NotFound";
 import AboutPage from "./pages/AboutPage";
+import UpdateProductForm from "./pages/UpdateProductForm";
+import AddProductForm from "./pages/AddProductForm";
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
         />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/add-product" element={<AddProductForm/>} />
+        <Route path="/updateProduct/:productId" element={<UpdateProductForm />} />
       </Routes>
     </div>
   );
