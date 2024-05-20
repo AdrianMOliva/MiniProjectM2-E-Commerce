@@ -7,8 +7,16 @@ import NotFound from "./pages/NotFound";
 import AboutPage from "./pages/AboutPage";
 import UpdateProductForm from "./pages/UpdateProductForm";
 import AddProductForm from "./pages/AddProductForm";
+import { useState } from "react";
+import jsonData from "./assets/products.json"
 
 function App() {
+  const [products, setProducts] = useState(jsonData)
+  const addProduct = (product) => {
+    const addedProducts = [...products, product];
+ 
+    setProducts(addedProducts);
+  };
   return (
     <div>
       <Routes>
@@ -19,7 +27,7 @@ function App() {
         />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/add-product" element={<AddProductForm/>} />
+        <Route path="/add-product" element={<AddProductForm addProduct= {addProduct}/>} />
         <Route path="/updateProduct/:productId" element={<UpdateProductForm />} />
       </Routes>
     </div>

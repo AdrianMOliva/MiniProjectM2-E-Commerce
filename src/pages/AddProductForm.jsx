@@ -1,8 +1,14 @@
-import axios from "axios";
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "../components/Sidebar";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import "./AddProductForm.css"
 
-function AddProductForm ()  {
+function AddProductForm (props)  {
+    
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [thumbnail, setThumbnail] = useState("");
@@ -22,21 +28,20 @@ function AddProductForm ()  {
   const handleBrand = (e) => setBrand(e.target.value);
   
 
-  const handleAddProduct = async (event) => {
+  const handleAddProduct = (event) => {
     event.preventDefault();
-    const newProduct = { title, description, thumbnail };
-    try {
-      const response = await axios.post(
-        "https://dummyjson.com/products/add",
-        newProduct
-      );
+    const newProduct = { title, description, thumbnail, price, discount, rating, brand };
+    
+      props.addProduct(newProduct);
+
       nav("/");
-    } catch (error) {
-      console.log(error);
-    }
+    
   };
   return (
-    <form onSubmit={handleAddProduct}>
+    <>
+    <Navbar />
+    <Sidebar />
+    <form onSubmit={handleAddProduct} className="formStyle">
       <label>
         Title:
         <input
@@ -62,26 +67,28 @@ function AddProductForm ()  {
         />
       </label>
       <label>
-          Price:
+          Price ($):
           <input
-            type="text"
+            type="number"
             value={price}
             onChange={handlePrice}
           />
         </label>
         <label>
-          Discount(%):
+          Discount (%):
           <input
-            type="text"
+            type="number"
             value={discount}
+            min={"1"} max={"100"}
             onChange={handleDiscount}
           />
         </label>
         <label>
           Rating:
           <input
-            type="text"
+            type="number"
             value={rating}
+            min={"0"} max={"5"}
             onChange={handleRating}
           />
         </label>
@@ -93,9 +100,11 @@ function AddProductForm ()  {
             onChange={handleBrand}
           />
         </label>
-      <button>Add</button>
+      <button type="submit">Add</button>
     </form>
-  );
+    <Footer/>
+    </>);
+  
 };
 
 export default AddProductForm;

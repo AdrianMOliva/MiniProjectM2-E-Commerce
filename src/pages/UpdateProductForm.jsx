@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function UpdateProductForm () {
   const [title, setTitle] = useState("");
@@ -29,7 +30,7 @@ function UpdateProductForm () {
         setDiscount(response.discount);
         setRating(response.rating);
         setBrand(response.brand);
-        nav("/");
+        
       } catch (err) {
         console.log(err);
       }
@@ -46,6 +47,7 @@ function UpdateProductForm () {
         updatedProduct
       );
       console.log("this is the update", response);
+      nav("/");
     } catch (error) {
       console.log(error);
     }

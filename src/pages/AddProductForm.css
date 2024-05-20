@@ -1,0 +1,22 @@
+.formStyle {
+    position: fixed;
+    top: 120px;
+    bottom: 90px;
+    left: 200px;
+    right: 0;
+    overflow-y: auto;
+    margin-top: 20px;
+    padding: 0;
+    display: "flex";
+    justify-content: space-between;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+  }
+
+.formStyle label{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}

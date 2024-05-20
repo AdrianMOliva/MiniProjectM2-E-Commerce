@@ -15,12 +15,18 @@ function HomePage() {
     setData(updatedData);
   };
 
+  const addProduct = (product) => {
+    const addedProducts = [...products, product];
+ 
+    setProducts(addedProducts);
+  };
+
   return (
     <>
       <Navbar />
       <Sidebar />
 
-      <List data={data} onDelete={handleDelete} />
+      <List data={data} onDelete={handleDelete} addProduct={addProduct} updatedProduct = {updatedProduct} />
       <Footer />
     </>
   );
