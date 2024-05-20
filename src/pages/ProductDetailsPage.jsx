@@ -41,7 +41,8 @@ function ProductDetailsPage() {
             border: "5px solid rgb(11, 11, 123)",
           }}
         />
-        <h2 style={{ fontWeight: "bold" }}>{product.title}</h2>
+        <h2 style={{ fontWeight: "bold" }}>{product.title}</h2> 
+        <h4>{product.rating}⭐</h4>
         <p style={{ fontStyle: "oblique" }}>{product.description}</p>
         <p
           style={{
@@ -51,7 +52,10 @@ function ProductDetailsPage() {
         >
           Category: {product.category}
         </p>
+        <p>Brand: <span style={{fontWeight: "bold"}}>{product.brand}</span></p>
         <p style={{}}>Price: ${product.price}</p>
+        <p>Discount : {product.discountPercentage}%</p>
+        
       </div>
 
       <Footer />
