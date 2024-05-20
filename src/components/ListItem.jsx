@@ -1,20 +1,20 @@
 import { Link } from "react-router-dom";
-function ListItem({ item, onDelete }) {
+function ListItem({ productsData, onDelete }) {
   return (
-    <li className="productItem">
+    <li key={productsData.id} className="productItem">
       <Link
-        key={item.id}
-        to={`/product/details/${item.id}`}
+        
+        to={`/product/details/${productsData.id}`}
         className="productLook"
       >
-        <img src={item.images[0]} />
+        <img src={productsData.thumbnail} />
         <span>
-          {item.title} {item.stock > 70 ? "⬆️" : "⬇️"}
+          {productsData.title} {productsData.stock > 70 ? "⬆️" : "⬇️"}
         </span>
-        <span>{item.price}$</span>
+        <span>{productsData.price}$</span>
       </Link>
-      <button onClick={() => onDelete(item.id)}>Delete</button>
-      <Link to={`/updateProduct/${item.id}`}>
+      <button onClick={() => onDelete(productsData.id)}>Delete</button>
+      <Link to={`/updateProduct/${productsData.id}`}>
         <button>Update Product</button>
       </Link>
     </li>

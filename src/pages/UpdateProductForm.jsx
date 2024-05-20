@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function UpdateProductForm ({data, handleUpdateProduct}) {
+function UpdateProductForm ({productData, handleUpdateProduct}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [thumbnail, setThumbnail] = useState("");
@@ -13,13 +13,16 @@ function UpdateProductForm ({data, handleUpdateProduct}) {
   const [rating, setRating] = useState("");
   const [brand, setBrand] = useState("");
 
-  
-
+  const nav = useNavigate();
+  const [product, setProduct] = useState(null);
   const { productId } = useParams();
 
   useEffect(() => {
+    const product = productData.find((p) => p.id === productId);
+    if (product) {
+      setProduct(product);
+      setTitle(product.title);
     
-    if (data && data.id === productId) {
       setTitle(product.title);
       setDescription(product.description);
       setThumbnail(product.thumbnail);
@@ -28,14 +31,20 @@ function UpdateProductForm ({data, handleUpdateProduct}) {
       setRating(product.rating);
       setBrand(product.brand);
     }
-  }, [productId, data]);
+    
+  }, [productId]);
 
-  
+  const handleUpdate = (event) => {
+    event.preventDefault();
+    const updatedProduct = { title, description, thumbnail, price, discount, rating, brand };
+    handleUpdateProduct(updatedProduct);
+    nav("/");
+  };
   return (
     <div>
       <h2>Update Form</h2>
 
-      <form onSubmit={handleUpdateProduct}>
+      <form onSubmit={handleUpdate}>
         <label>
           Title:
           <input
@@ -69,7 +78,7 @@ function UpdateProductForm ({data, handleUpdateProduct}) {
         <label>
           Price:
           <input
-            type="text"
+            type="number"
             value={price}
             onChange={(e) => {
               setPrice(e.target.value);
@@ -79,8 +88,9 @@ function UpdateProductForm ({data, handleUpdateProduct}) {
         <label>
           Discount(%):
           <input
-            type="text"
+            type="number"
             value={discount}
+            min={"1"} max={"100"}
             onChange={(e) => {
               setDiscount(e.target.value);
             }}
@@ -89,8 +99,9 @@ function UpdateProductForm ({data, handleUpdateProduct}) {
         <label>
           Rating:
           <input
-            type="text"
+            type="number"
             value={rating}
+            min={"0"} max={"5"}
             onChange={(e) => {
               setRating(e.target.value);
             }}

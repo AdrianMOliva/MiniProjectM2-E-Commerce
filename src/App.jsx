@@ -11,24 +11,33 @@ import { useState } from "react";
 import jsonData from "./assets/products.json"
 
 function App() {
-  const [products, setProducts] = useState(jsonData)
+  const [products, setProducts] = useState(jsonData);
+  const handleUpdateProduct = (updatedProduct) => {
+  
+    const updatedProducts = products.map((product) =>
+      product.id === updatedProduct.id ? updatedProduct : product
+    );
+    setProducts(updatedProducts);
+    
+  };
+
   const addProduct = (product) => {
-    const addedProducts = [...products, product];
+    const addedProducts = [...productsData, product];
  
     setProducts(addedProducts);
   };
   return (
     <div>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage productsData = {products} setProductsData={setProducts} />} />
         <Route
           path="/product/details/:productId"
           element={<ProductDetailsPage />}
         />
         <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/add-product" element={<AddProductForm addProduct= {addProduct}/>} />
-        <Route path="/updateProduct/:productId" element={<UpdateProductForm />} />
+        <Route path="/add-product" element={<AddProductForm addProduct={addProduct} productsData={products} setProductsData = {setProducts}/>} />
+        <Route path="/updateProduct/:productId" element={<UpdateProductForm productData = {products} handleUpdateProduct={handleUpdateProduct} />} />
       </Routes>
     </div>
   );

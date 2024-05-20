@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./AddProductForm.css"
 
-function AddProductForm ({handleAddProduct})  {
+function AddProductForm ({addProduct, productsData, setProductsData})  {
     
 
   const [title, setTitle] = useState("");
@@ -16,8 +16,9 @@ function AddProductForm ({handleAddProduct})  {
   const [discount, setDiscount] = useState("");
   const [rating, setRating] = useState("");
   const [brand, setBrand] = useState("");
+  const [stock, setStock] = useState("")
 
- 
+ const nav = useNavigate();
 
   const handleTitle = (e) => setTitle(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
@@ -26,8 +27,22 @@ function AddProductForm ({handleAddProduct})  {
   const handleDiscount = (e) => setDiscount(e.target.value);
   const handleRating = (e) => setRating(e.target.value);
   const handleBrand = (e) => setBrand(e.target.value);
+  const handleStock = (e) => setStock(e.target.value);
   
-
+  const handleAddProduct = (event) => {
+    event.preventDefault();
+    const newProduct = { title, description, thumbnail, price, discount, rating, brand };
+    
+    setTitle("");
+ setDescription("");
+  setThumbnail("");
+setPrice("");
+  setDiscount("");
+  setRating("");
+  setBrand("");
+  setProductsData([...productsData, newProduct]);
+    nav("/");
+  };
  
   return (
     <>
@@ -90,6 +105,15 @@ function AddProductForm ({handleAddProduct})  {
             type="text"
             value={brand}
             onChange={handleBrand}
+          />
+        </label>
+        <label>
+          Stock:
+          <input
+            type="number"
+            value={stock}
+            min={"0"}
+            onChange={handleStock}
           />
         </label>
       <button type="submit">Add</button>

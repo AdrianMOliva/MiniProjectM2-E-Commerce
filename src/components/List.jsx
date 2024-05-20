@@ -1,12 +1,12 @@
 import ListItem from "./ListItem";
 import "./List.css";
 
-function List({ data, onDelete }) {
+function List({ productsData, onDelete }) {
   return (
     <>
       <ul className="itemList">
-        {data.map((item) => (
-          <ListItem key={item.id} item={item} onDelete={onDelete} />
+        {productsData.map((item) => (
+          <ListItem key={item.id} productsData={item} onDelete={onDelete} />
         ))}
       </ul>
     </>

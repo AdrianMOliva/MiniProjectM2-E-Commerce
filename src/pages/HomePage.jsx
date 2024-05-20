@@ -6,36 +6,26 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import List from "../components/List";
 import { useNavigate } from "react-router-dom";
+import AddProductForm from "./AddProductForm";
 
-function HomePage() {
+function HomePage({productsData, setProductsData}) {
   const nav = useNavigate();
-  const [data, setData] = useState(jsonData);
 
   const handleDelete = (id) => {
-    const updatedData = data.filter((item) => item.id !== id);
+    const updatedData = productsData.filter((item) => item.id !== id);
 
-    setData(updatedData);
+    setProductsData(updatedData);
   };
 
-  const addProduct = (product) => {
-    const addedProducts = [...data, product];
- 
-    setData(addedProducts);
-  };
+  
 
-  const handleUpdateProduct = (event) => {
-    event.preventDefault();
-    const updatedProduct = { title, description, thumbnail, price, discount, rating, brand };
-    
-      nav("/");
-   setData(updatedProduct)
-  };
+  
   return (
     <>
       <Navbar />
       <Sidebar />
-
-      <List data={data} onDelete={handleDelete} addProduct={addProduct} updatedProduct = {handleUpdateProduct} />
+      
+      <List productsData={productsData} onDelete={handleDelete}  />
       <Footer />
     </>
   );
