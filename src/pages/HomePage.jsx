@@ -5,8 +5,10 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import List from "../components/List";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
+  const nav = useNavigate();
   const [data, setData] = useState(jsonData);
 
   const handleDelete = (id) => {
@@ -16,17 +18,24 @@ function HomePage() {
   };
 
   const addProduct = (product) => {
-    const addedProducts = [...products, product];
+    const addedProducts = [...data, product];
  
-    setProducts(addedProducts);
+    setData(addedProducts);
   };
 
+  const handleUpdateProduct = (event) => {
+    event.preventDefault();
+    const updatedProduct = { title, description, thumbnail, price, discount, rating, brand };
+    
+      nav("/");
+   setData(updatedProduct)
+  };
   return (
     <>
       <Navbar />
       <Sidebar />
 
-      <List data={data} onDelete={handleDelete} addProduct={addProduct} updatedProduct = {updatedProduct} />
+      <List data={data} onDelete={handleDelete} addProduct={addProduct} updatedProduct = {handleUpdateProduct} />
       <Footer />
     </>
   );

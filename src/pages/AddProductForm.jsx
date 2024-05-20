@@ -6,7 +6,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "./AddProductForm.css"
 
-function AddProductForm (props)  {
+function AddProductForm ({handleAddProduct})  {
     
 
   const [title, setTitle] = useState("");
@@ -17,7 +17,7 @@ function AddProductForm (props)  {
   const [rating, setRating] = useState("");
   const [brand, setBrand] = useState("");
 
-  const nav = useNavigate();
+ 
 
   const handleTitle = (e) => setTitle(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
@@ -28,15 +28,7 @@ function AddProductForm (props)  {
   const handleBrand = (e) => setBrand(e.target.value);
   
 
-  const handleAddProduct = (event) => {
-    event.preventDefault();
-    const newProduct = { title, description, thumbnail, price, discount, rating, brand };
-    
-      props.addProduct(newProduct);
-
-      nav("/");
-    
-  };
+ 
   return (
     <>
     <Navbar />

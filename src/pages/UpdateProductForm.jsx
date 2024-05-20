@@ -1,9 +1,10 @@
-import axios from "axios";
+
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-function UpdateProductForm () {
+function UpdateProductForm ({data, handleUpdateProduct}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [thumbnail, setThumbnail] = useState("");
@@ -12,46 +13,24 @@ function UpdateProductForm () {
   const [rating, setRating] = useState("");
   const [brand, setBrand] = useState("");
 
-  const nav = useNavigate();
+  
 
   const { productId } = useParams();
 
   useEffect(() => {
-    const updateOne = async () => {
-      try {
-        const response = await axios.get(
-          `https://dummyjson.com/products/${productId}`
-        );
-        
-        setTitle(response.title);
-        setDescription(response.description);
-        setThumbnail(response.thumbnail);
-        setPrice(response.price);
-        setDiscount(response.discount);
-        setRating(response.rating);
-        setBrand(response.brand);
-        
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    updateOne();
-  }, [productId]);
-
-  const handleUpdateProduct = async (event) => {
-    event.preventDefault();
-    const updatedProduct = { title, description, thumbnail, price, discount, rating, brand };
-    try {
-      const response = await axios.put(
-        `https://dummyjson.com/products/${productId}`,
-        updatedProduct
-      );
-      console.log("this is the update", response);
-      nav("/");
-    } catch (error) {
-      console.log(error);
+    
+    if (data && data.id === productId) {
+      setTitle(product.title);
+      setDescription(product.description);
+      setThumbnail(product.thumbnail);
+      setPrice(product.price);
+      setDiscount(product.discount);
+      setRating(product.rating);
+      setBrand(product.brand);
     }
-  };
+  }, [productId, data]);
+
+  
   return (
     <div>
       <h2>Update Form</h2>
