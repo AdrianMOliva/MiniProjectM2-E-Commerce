@@ -1,10 +1,12 @@
-
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
+import Footer from "../components/Footer";
+import "./UpdateProductForm.css";
 
-function UpdateProductForm ({productData, handleUpdateProduct}) {
+function UpdateProductForm({ productsData, handleUpdateProduct }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [thumbnail, setThumbnail] = useState("");
@@ -12,17 +14,18 @@ function UpdateProductForm ({productData, handleUpdateProduct}) {
   const [discount, setDiscount] = useState("");
   const [rating, setRating] = useState("");
   const [brand, setBrand] = useState("");
+  const [stock, setStock] = useState("");
 
   const nav = useNavigate();
   const [product, setProduct] = useState(null);
   const { productId } = useParams();
 
   useEffect(() => {
-    const product = productData.find((p) => p.id === productId);
+    const product = productsData.find((p) => p.id === productId);
     if (product) {
       setProduct(product);
       setTitle(product.title);
-    
+
       setTitle(product.title);
       setDescription(product.description);
       setThumbnail(product.thumbnail);
@@ -30,21 +33,32 @@ function UpdateProductForm ({productData, handleUpdateProduct}) {
       setDiscount(product.discount);
       setRating(product.rating);
       setBrand(product.brand);
+      setStock(product.stock);
     }
-    
   }, [productId]);
 
   const handleUpdate = (event) => {
     event.preventDefault();
-    const updatedProduct = { title, description, thumbnail, price, discount, rating, brand };
+    const updatedProduct = {
+      id: parseInt(productId),
+      title,
+      description,
+      thumbnail,
+      price,
+      discount,
+      rating,
+      brand,
+      stock,
+    };
     handleUpdateProduct(updatedProduct);
     nav("/");
   };
   return (
-    <div>
-      <h2>Update Form</h2>
+    <>
+      <Navbar />
+      <Sidebar />
 
-      <form onSubmit={handleUpdate}>
+      <form onSubmit={handleUpdate} className="updateFormstyle">
         <label>
           Title:
           <input
@@ -90,7 +104,8 @@ function UpdateProductForm ({productData, handleUpdateProduct}) {
           <input
             type="number"
             value={discount}
-            min={"1"} max={"100"}
+            min={"1"}
+            max={"100"}
             onChange={(e) => {
               setDiscount(e.target.value);
             }}
@@ -101,7 +116,8 @@ function UpdateProductForm ({productData, handleUpdateProduct}) {
           <input
             type="number"
             value={rating}
-            min={"0"} max={"5"}
+            min={"0"}
+            max={"5"}
             onChange={(e) => {
               setRating(e.target.value);
             }}
@@ -117,10 +133,23 @@ function UpdateProductForm ({productData, handleUpdateProduct}) {
             }}
           />
         </label>
+        <label>
+          Stock:
+          <input
+            type="number"
+            value={stock}
+            min={"0"}
+            onChange={(e) => {
+              setRating(e.target.value);
+            }}
+          />
+        </label>
         <button>Update</button>
       </form>
-    </div>
+
+      <Footer />
+    </>
   );
-};
+}
 
 export default UpdateProductForm;

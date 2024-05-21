@@ -1,14 +1,12 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import "./AddProductForm.css"
+import "./AddProductForm.css";
+import { v4 as uuidv4 } from "uuid";
 
-function AddProductForm ({addProduct, productsData, setProductsData})  {
-    
-
+function AddProductForm({ addProduct, productsData, setProductsData }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [thumbnail, setThumbnail] = useState("");
@@ -16,9 +14,9 @@ function AddProductForm ({addProduct, productsData, setProductsData})  {
   const [discount, setDiscount] = useState("");
   const [rating, setRating] = useState("");
   const [brand, setBrand] = useState("");
-  const [stock, setStock] = useState("")
+  const [stock, setStock] = useState("");
 
- const nav = useNavigate();
+  const nav = useNavigate();
 
   const handleTitle = (e) => setTitle(e.target.value);
   const handleDescription = (e) => setDescription(e.target.value);
@@ -28,65 +26,60 @@ function AddProductForm ({addProduct, productsData, setProductsData})  {
   const handleRating = (e) => setRating(e.target.value);
   const handleBrand = (e) => setBrand(e.target.value);
   const handleStock = (e) => setStock(e.target.value);
-  
+
   const handleAddProduct = (event) => {
     event.preventDefault();
-    const newProduct = { title, description, thumbnail, price, discount, rating, brand };
-    
+    const newProduct = {
+      id: uuidv4(),
+      title,
+      description,
+      thumbnail,
+      price,
+      discount,
+      rating,
+      brand,
+    };
+
     setTitle("");
- setDescription("");
-  setThumbnail("");
-setPrice("");
-  setDiscount("");
-  setRating("");
-  setBrand("");
-  setProductsData([...productsData, newProduct]);
+    setDescription("");
+    setThumbnail("");
+    setPrice("");
+    setDiscount("");
+    setRating("");
+    setBrand("");
+    setStock("");
+    setProductsData([...productsData, newProduct]);
     nav("/");
   };
- 
+
   return (
     <>
-    <Navbar />
-    <Sidebar />
-    <form onSubmit={handleAddProduct} className="formStyle">
-      <label>
-        Title:
-        <input
-          type="text"
-          value={title}
-          onChange={handleTitle}
-        />
-      </label>
-      <label>
-        Description:
-        <input
-          type="text"
-          value={description}
-          onChange={handleDescription}
-        />
-      </label>
-      <label>
-        Image:
-        <input
-          type="text"
-          value={thumbnail}
-          onChange={handleThumbnail}
-        />
-      </label>
-      <label>
+      <Navbar />
+      <Sidebar />
+      <form onSubmit={handleAddProduct} className="formStyle">
+        <label>
+          Title:
+          <input type="text" value={title} onChange={handleTitle} />
+        </label>
+        <label>
+          Description:
+          <input type="text" value={description} onChange={handleDescription} />
+        </label>
+        <label>
+          Image:
+          <input type="text" value={thumbnail} onChange={handleThumbnail} />
+        </label>
+        <label>
           Price ($):
-          <input
-            type="number"
-            value={price}
-            onChange={handlePrice}
-          />
+          <input type="number" value={price} onChange={handlePrice} />
         </label>
         <label>
           Discount (%):
           <input
             type="number"
             value={discount}
-            min={"1"} max={"100"}
+            min={"1"}
+            max={"100"}
             onChange={handleDiscount}
           />
         </label>
@@ -95,32 +88,24 @@ setPrice("");
           <input
             type="number"
             value={rating}
-            min={"0"} max={"5"}
+            min={"0"}
+            max={"5"}
             onChange={handleRating}
           />
         </label>
         <label>
           Brand:
-          <input
-            type="text"
-            value={brand}
-            onChange={handleBrand}
-          />
+          <input type="text" value={brand} onChange={handleBrand} />
         </label>
         <label>
           Stock:
-          <input
-            type="number"
-            value={stock}
-            min={"0"}
-            onChange={handleStock}
-          />
+          <input type="number" value={stock} min={"0"} onChange={handleStock} />
         </label>
-      <button type="submit">Add</button>
-    </form>
-    <Footer/>
-    </>);
-  
-};
+        <button type="submit">Add</button>
+      </form>
+      <Footer />
+    </>
+  );
+}
 
 export default AddProductForm;

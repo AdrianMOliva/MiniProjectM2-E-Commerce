@@ -48,3 +48,17 @@
 .productLook:last-child {
   border-bottom: none;
 }
+
+.updateButton {
+  background-color: rgb(29, 29, 189);
+  align-self: center;
+  margin-left: 60px;
+  width: 120px;
+  height: 40px;
+}
+
+.deleteButton {
+  background-color: rgb(144, 137, 137);
+  width: 120px;
+  height: 40px;
+}

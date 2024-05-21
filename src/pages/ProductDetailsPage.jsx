@@ -7,24 +7,17 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import "./ProductDetailPage.css";
 
-function ProductDetailsPage() {
+function ProductDetailsPage({ productsData, setProductsData }) {
   const { productId } = useParams();
-  const [product, setProduct] = useState({});
-  useEffect(() => {
-    const fetchOneProduct = async () => {
-      try {
-        const response = await fetch(
-          `https://dummyjson.com/products/${productId}`
-        );
-        const parsed = await response.json();
 
-        setProduct(parsed);
-      } catch (err) {
-        console.log("there was an error, fetching one product", err);
-      }
-    };
-    fetchOneProduct();
-  }, [productId]);
+  const [foundProduct, setFoundProduct] = useState({});
+
+  useEffect(() => {
+    const product = productsData.find(
+      (product) => product.id === parseInt(productId)
+    );
+    setFoundProduct(product);
+  }, [productsData, productId]);
 
   return (
     <>
@@ -33,29 +26,32 @@ function ProductDetailsPage() {
 
       <div className="productDetailsPage">
         <img
-          src={product.thumbnail}
-          alt={product.title}
+          src={foundProduct.thumbnail}
+          alt={foundProduct.title}
           style={{
             width: "500px",
             height: "300px",
             border: "5px solid rgb(11, 11, 123)",
           }}
         />
-        <h2 style={{ fontWeight: "bold" }}>{product.title}</h2> 
-        <h4>{product.rating}⭐</h4>
-        <p style={{ fontStyle: "oblique" }}>{product.description}</p>
+        <h2 style={{ fontWeight: "bold" }}>{foundProduct.title}</h2>
+        <h4>{foundProduct.rating}⭐</h4>
+        <p style={{ fontStyle: "oblique" }}>{foundProduct.description}</p>
         <p
           style={{
             display: "inline-block",
             backgroundColor: "rgb(28, 68, 178)",
           }}
         >
-          Category: {product.category}
+          Category: {foundProduct.category}
         </p>
-        <p>Brand: <span style={{fontWeight: "bold"}}>{product.brand}</span></p>
-        <p style={{}}>Price: ${product.price}</p>
-        <p>Discount : {product.discountPercentage}%</p>
-        
+        <p>
+          Brand:{" "}
+          <span style={{ fontWeight: "bold" }}>{foundProduct.brand}</span>
+        </p>
+        <p style={{}}>Price: ${foundProduct.price}</p>
+        <p>Discount : {foundProduct.discountPercentage}%</p>
+        <p>Stock: {foundProduct.stock}</p>
       </div>
 
       <Footer />
