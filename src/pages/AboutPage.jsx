@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 import "./AboutPage.css";
+import photo from "../assets/unnamed.webp";
 function AboutPage() {
   return (
     <>
@@ -12,7 +13,7 @@ function AboutPage() {
         className="aboutPage"
       >
         <h1>Mini E-Commerce Admin Project</h1>
-        <img src="" alt="" />
+        <img src={photo} alt="" />
         <h2>
           Student :
           <span style={{ textDecoration: "underline" }}> Adrian Martin</span>
