@@ -25,31 +25,15 @@ function ProductDetailsPage({ productsData, setProductsData }) {
       <Sidebar />
 
       <div className="productDetailsPage">
-        <img
-          src={foundProduct.thumbnail}
-          alt={foundProduct.title}
-          style={{
-            width: "500px",
-            height: "300px",
-            border: "5px solid rgb(11, 11, 123)",
-          }}
-        />
-        <h2 style={{ fontWeight: "bold" }}>{foundProduct.title}</h2>
+        <img src={foundProduct.thumbnail} alt={foundProduct.title} />
+        <h2>{foundProduct.title}</h2>
         <h4>{foundProduct.rating}⭐</h4>
-        <p style={{ fontStyle: "oblique" }}>{foundProduct.description}</p>
-        <p
-          style={{
-            display: "inline-block",
-            backgroundColor: "rgb(28, 68, 178)",
-          }}
-        >
-          Category: {foundProduct.category}
-        </p>
+        <p>{foundProduct.description}</p>
+        <p className="categoryTag">Category: {foundProduct.category}</p>
         <p>
-          Brand:{" "}
-          <span style={{ fontWeight: "bold" }}>{foundProduct.brand}</span>
+          Brand: <span>{foundProduct.brand}</span>
         </p>
-        <p style={{}}>Price: ${foundProduct.price}</p>
+        <p>Price: ${foundProduct.price}</p>
         <p>Discount : {foundProduct.discountPercentage}%</p>
         <p>Stock: {foundProduct.stock}</p>
       </div>

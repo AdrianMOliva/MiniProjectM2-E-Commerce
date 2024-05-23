@@ -1,18 +1,19 @@
 footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
   position: fixed;
   bottom: 0;
-  left: 200px;
-  font-weight: lighter;
-  margin-bottom: 50px;
-  border: 1px solid rgba(255, 255, 255, 0.574);
-  height: 40px;
-  width: calc(100% - 200px);
-  justify-content: center;
-  align-items: center;
-  font-size: 18px;
+  width: 100%;
 }
 
 footer > a {
+  color: white;
   text-decoration: none;
-  color: whitesmoke;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #8e2de2;
 }

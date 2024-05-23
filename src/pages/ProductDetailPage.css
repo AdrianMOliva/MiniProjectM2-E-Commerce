@@ -12,3 +12,32 @@
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
 }
+
+.productDetailsPage img {
+  width: 500px;
+  height: 300px;
+  border: 5px solid rgb(11, 11, 123);
+  margin-bottom: 1rem;
+}
+
+.productDetailsPage h2 {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.productDetailsPage h4 {
+  margin-bottom: 0.5rem;
+}
+
+.productDetailsPage p {
+  margin-bottom: 0.5rem;
+}
+
+.productDetailsPage .categoryTag {
+  display: inline-block;
+  background-color: rgb(28, 68, 178);
+  padding: 0.5rem;
+  border-radius: 5px;
+  color: white;
+  margin-bottom: 1rem;
+}

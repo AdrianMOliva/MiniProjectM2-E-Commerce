@@ -1,7 +1,7 @@
 .itemList {
   position: fixed;
   top: 120px;
-  bottom: 90px;
+  bottom: 50px;
   left: 200px;
   right: 0;
   overflow-y: auto;
@@ -14,9 +14,14 @@
 .productItem {
   display: flex;
   align-items: center;
-
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid #ccc;
+  border-radius: 10px;
   padding: 10px;
+}
+.productItem:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 .productLook {
   padding: 10px;
@@ -27,22 +32,16 @@
   text-decoration: none;
 }
 
-.productLook > span {
+.productLook span {
   font-size: 20px;
   text-decoration: none;
   margin-right: 60px;
 }
 
-.productLook > img {
+.productLook img {
   width: 300px;
   height: 200px;
   margin-right: 60px;
-}
-
-.productLook > button {
-  margin-right: 30px;
-  width: 60px;
-  height: 30px;
 }
 
 .productLook:last-child {
@@ -50,15 +49,32 @@
 }
 
 .updateButton {
-  background-color: rgb(29, 29, 189);
-  align-self: center;
-  margin-left: 60px;
-  width: 120px;
-  height: 40px;
+  background-color: #4a00e0;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  transition: background 0.3s;
+  margin: 0.5rem;
 }
 
 .deleteButton {
-  background-color: rgb(144, 137, 137);
-  width: 120px;
-  height: 40px;
+  background-color: #31048a;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  transition: background 0.3s;
+  margin: 0.5rem;
+}
+
+.deleteButton:hover,
+.updateButton:hover {
+  background-color: #8e2de2;
+}
+
+.deleteButton:hover {
+  background-color: #8e2de2;
 }

@@ -20,3 +20,25 @@
   align-items: center;
   margin-bottom: 20px;
 }
+
+.updateFormstyle input {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 0.5rem;
+}
+
+.updateFormstyle button {
+  padding: 0.5rem 1rem;
+  background-color: #4a00e0;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+}
+
+.updateFormstyle button:hover {
+  background-color: #8e2de2;
+}
