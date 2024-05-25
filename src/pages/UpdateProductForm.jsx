@@ -140,7 +140,7 @@ function UpdateProductForm({ productsData, handleUpdateProduct }) {
             value={stock}
             min={"0"}
             onChange={(e) => {
-              setRating(e.target.value);
+              setStock(e.target.value);
             }}
           />
         </label>
