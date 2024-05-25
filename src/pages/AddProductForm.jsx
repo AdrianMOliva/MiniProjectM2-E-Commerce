@@ -15,6 +15,7 @@ function AddProductForm({ addProduct, productsData, setProductsData }) {
   const [rating, setRating] = useState("");
   const [brand, setBrand] = useState("");
   const [stock, setStock] = useState("");
+  const [category, setCategory] = useState("");
 
   const nav = useNavigate();
 
@@ -22,6 +23,7 @@ function AddProductForm({ addProduct, productsData, setProductsData }) {
   const handleDescription = (e) => setDescription(e.target.value);
   const handleThumbnail = (e) => setThumbnail(e.target.value);
   const handlePrice = (e) => setPrice(e.target.value);
+  const handleCategory = (e) => setCategory(e.target.value);
   const handleDiscount = (e) => setDiscount(e.target.value);
   const handleRating = (e) => setRating(e.target.value);
   const handleBrand = (e) => setBrand(e.target.value);
@@ -34,6 +36,7 @@ function AddProductForm({ addProduct, productsData, setProductsData }) {
       title,
       description,
       thumbnail,
+      category,
       price,
       discount,
       rating,
@@ -43,6 +46,7 @@ function AddProductForm({ addProduct, productsData, setProductsData }) {
     setTitle("");
     setDescription("");
     setThumbnail("");
+    setCategory("");
     setPrice("");
     setDiscount("");
     setRating("");
@@ -64,6 +68,10 @@ function AddProductForm({ addProduct, productsData, setProductsData }) {
         <label>
           Description:
           <input type="text" value={description} onChange={handleDescription} />
+        </label>
+        <label>
+          Category:
+          <input type="text" value={category} onChange={handleCategory} />
         </label>
         <label>
           Image:

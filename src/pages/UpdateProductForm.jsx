@@ -15,6 +15,7 @@ function UpdateProductForm({ productsData, handleUpdateProduct }) {
   const [rating, setRating] = useState("");
   const [brand, setBrand] = useState("");
   const [stock, setStock] = useState("");
+  const [category, setCategory] = useState("");
 
   const nav = useNavigate();
   const [product, setProduct] = useState(null);
@@ -34,6 +35,7 @@ function UpdateProductForm({ productsData, handleUpdateProduct }) {
       setRating(product.rating);
       setBrand(product.brand);
       setStock(product.stock);
+      setCategory(product.category);
     }
   }, [productId]);
 
@@ -44,6 +46,7 @@ function UpdateProductForm({ productsData, handleUpdateProduct }) {
       title,
       description,
       thumbnail,
+      category,
       price,
       discount,
       rating,
@@ -86,6 +89,16 @@ function UpdateProductForm({ productsData, handleUpdateProduct }) {
             value={thumbnail}
             onChange={(e) => {
               setThumbnail(e.target.value);
+            }}
+          />
+        </label>
+        <label>
+          Category:
+          <input
+            type="text"
+            value={category}
+            onChange={(e) => {
+              setCategory(e.target.value);
             }}
           />
         </label>
